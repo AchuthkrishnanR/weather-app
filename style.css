@@ -12,10 +12,12 @@ body {
     justify-content: center;
     align-items: center;
 
-    background:
-        linear-gradient(to right, #0f172a, #1e293b);
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s;
 
     font-family: Arial, sans-serif;
+    padding: 30px;
 }
 
 .container {
@@ -26,7 +28,9 @@ body {
 
     border-radius: 20px;
 
-    width: 350px;
+    width: 420px;
+
+    max-width: 90%;
 
     text-align: center;
 
@@ -34,6 +38,14 @@ body {
 
     box-shadow:
         0 0 20px rgba(0,0,0,0.4);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
 }
 
 h1 {
@@ -117,6 +129,13 @@ button:hover {
 .container {
 
     transition: 0.3s;
+    background:
+    rgba(15, 23, 42, 0.75);
+
+    backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
 }
 
 .container:hover {
@@ -158,41 +177,115 @@ button:disabled {
 
     cursor: not-allowed;
 }
-/* SEARCH HISTORY */
+/* HISTORY */
 
 .history {
 
-    margin-top: 25px;
+    width: 100%;
 
-    text-align: left;
+    margin-top: 10px;
 }
 
 .history h3 {
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+
+    font-size: 1.1rem;
+
+    text-align: center;
 }
 
 #history-list {
 
     list-style: none;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    justify-content: center;
 }
 
 #history-list li {
 
-    background: rgba(255,255,255,0.1);
+    background:
+        rgba(255,255,255,0.12);
 
-    padding: 8px 12px;
+    padding: 8px 14px;
 
-    border-radius: 8px;
+    border-radius: 30px;
 
-    margin-bottom: 8px;
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    font-size: 0.95rem;
+}
+
+#history-list li:hover {
+
+    background:
+        rgba(255,255,255,0.25);
+
+    transform: scale(1.05);
+}
+/* WEATHER BACKGROUNDS */
+
+.clear {
+
+    background-image:
+url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');
+}
+
+.clouds {
+
+    background-image:
+url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=2070&auto=format&fit=crop');
+}
+
+.rain {
+
+    background-image:
+url('https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=2070&auto=format&fit=crop');
+}
+
+.snow {
+
+    background-image:
+url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d?q=80&w=2070&auto=format&fit=crop');
+}
+
+.thunderstorm {
+
+    background-image:
+url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?q=80&w=2070&auto=format&fit=crop');
+}
+#location-btn {
+
+    margin-top: 15px;
+
+    width: 100%;
+
+    background: #10b981;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    color: white;
+
+    font-size: 1rem;
 
     cursor: pointer;
 
     transition: 0.3s;
 }
 
-#history-list li:hover {
+#location-btn:hover {
 
-    background: rgba(255,255,255,0.2);
+    background: #059669;
 }
