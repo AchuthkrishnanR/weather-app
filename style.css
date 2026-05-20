@@ -289,3 +289,97 @@ url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?q=80&w=2070&au
 
     background: #059669;
 }
+
+/* FORECAST */
+
+.forecast {
+
+    width: 100%;
+
+    margin-top: 10px;
+}
+
+.forecast h3 {
+
+    text-align: center;
+
+    margin-bottom: 15px;
+}
+
+#forecast-container {
+
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+}
+
+.forecast-card {
+
+    min-width: 90px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    padding: 12px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+.forecast-card:hover {
+
+    transform: translateY(-5px);
+
+    background:
+        rgba(255,255,255,0.2);
+}
+
+.forecast-card img {
+
+    width: 50px;
+}
+footer {
+
+    position: fixed;
+
+    bottom: 10px;
+
+    color: white;
+
+    font-size: 0.9rem;
+}
+
+@media(max-width: 500px) {
+
+    .container {
+
+        padding: 25px;
+    }
+
+    h1 {
+
+        font-size: 2.2rem;
+    }
+
+    #temperature {
+
+        font-size: 4rem;
+    }
+
+    .input-section {
+
+        flex-direction: column;
+    }
+
+    button {
+
+        width: 100%;
+    }
+}

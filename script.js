@@ -1,5 +1,10 @@
 const apiKey = "7aa46ff16e9fcb4c5a44464b21457ec0";
 
+const forecastContainer =
+    document.getElementById(
+        "forecast-container"
+    );
+
 const searchBtn =
     document.getElementById("search-btn");
 
@@ -66,6 +71,8 @@ async function getWeather(city) {
         }
 
         updateWeatherUI(data);
+
+        getForecast(city);
         
         saveSearch(city);
 
@@ -246,4 +253,75 @@ function updateWeatherUI(data) {
     document.getElementById("wind")
         .textContent =
             `Wind: ${data.wind.speed} km/h`;
+}
+
+async function getForecast(city) {
+
+    const url =
+`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    try {
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        renderForecast(data.list);
+
+    }
+
+    catch(error) {
+
+        console.log(error);
+    }
+}
+
+function renderForecast(forecastList) {
+
+    forecastContainer.innerHTML = "";
+
+    const dailyForecast =
+        forecastList.filter(item =>
+            item.dt_txt.includes("12:00:00")
+        );
+
+    dailyForecast.forEach(day => {
+
+        const date =
+            new Date(day.dt_txt);
+
+        const dayName =
+            date.toLocaleDateString(
+                "en-US",
+                { weekday: "short" }
+            );
+
+        const temp =
+            Math.round(day.main.temp);
+
+        const icon =
+            day.weather[0].icon;
+
+        const card =
+            document.createElement("div");
+
+        card.classList.add(
+            "forecast-card"
+        );
+
+        card.innerHTML = `
+            <h4>${dayName}</h4>
+
+            <img
+src="https://openweathermap.org/img/wn/${icon}@2x.png"
+            >
+
+            <p>${temp}°C</p>
+        `;
+
+        forecastContainer
+            .appendChild(card);
+    });
 }
