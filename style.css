@@ -158,3 +158,41 @@ button:disabled {
 
     cursor: not-allowed;
 }
+/* SEARCH HISTORY */
+
+.history {
+
+    margin-top: 25px;
+
+    text-align: left;
+}
+
+.history h3 {
+
+    margin-bottom: 10px;
+}
+
+#history-list {
+
+    list-style: none;
+}
+
+#history-list li {
+
+    background: rgba(255,255,255,0.1);
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 8px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#history-list li:hover {
+
+    background: rgba(255,255,255,0.2);
+}

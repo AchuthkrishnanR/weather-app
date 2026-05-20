@@ -9,6 +9,9 @@ const cityInput =
 const originalBtnText =
     searchBtn.textContent;
 
+const historyList =
+    document.getElementById("history-list");
+
 searchBtn.addEventListener("click", () => {
 
     const city = cityInput.value;
@@ -77,6 +80,8 @@ async function getWeather(city) {
         document.getElementById("wind")
             .textContent =
                 `Wind: ${data.wind.speed} km/h`;
+        
+        saveSearch(city);
 
     }
 
@@ -97,3 +102,56 @@ async function getWeather(city) {
         searchBtn.disabled = false;
     }
 }
+
+/* SAVE SEARCH */
+
+function saveSearch(city) {
+
+    let searches =
+        JSON.parse(
+            localStorage.getItem("searches")
+        ) || [];
+
+    if(!searches.includes(city)) {
+
+        searches.push(city);
+
+        localStorage.setItem(
+            "searches",
+            JSON.stringify(searches)
+        );
+
+        renderHistory();
+    }
+}
+
+/* RENDER HISTORY */
+
+function renderHistory() {
+
+    historyList.innerHTML = "";
+
+    let searches =
+        JSON.parse(
+            localStorage.getItem("searches")
+        ) || [];
+
+    searches.forEach(city => {
+
+        const li =
+            document.createElement("li");
+
+        li.textContent = city;
+
+        li.addEventListener("click", () => {
+
+            getWeather(city);
+        });
+
+        historyList.appendChild(li);
+    });
+}
+
+/* LOAD HISTORY */
+
+renderHistory();
