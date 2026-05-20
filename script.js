@@ -1,10 +1,13 @@
-const apiKey = "1ec0a2930f4d54d574c7d798e587a2a6";
+const apiKey = "7aa46ff16e9fcb4c5a44464b21457ec0";
 
 const searchBtn =
     document.getElementById("search-btn");
 
 const cityInput =
     document.getElementById("city-input");
+
+const originalBtnText =
+    searchBtn.textContent;
 
 searchBtn.addEventListener("click", () => {
 
@@ -25,6 +28,12 @@ async function getWeather(city) {
 
     const url =
 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    /* LOADING START */
+
+    searchBtn.textContent = "Loading...";
+
+    searchBtn.disabled = true;
 
     try {
 
@@ -51,11 +60,12 @@ async function getWeather(city) {
         document.getElementById("description")
             .textContent =
                 data.weather[0].description;
+
         const iconCode =
-                data.weather[0].icon;
+            data.weather[0].icon;
 
         const iconUrl =
-        `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+`https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
         document.getElementById("weather-icon")
             .src = iconUrl;
@@ -75,5 +85,15 @@ async function getWeather(city) {
         console.log(error);
 
         alert("Something went wrong");
+    }
+
+    finally {
+
+        /* LOADING END */
+
+        searchBtn.textContent =
+            originalBtnText;
+
+        searchBtn.disabled = false;
     }
 }
