@@ -7,7 +7,7 @@
 body {
 
     height: 100vh;
-
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,8 +16,19 @@ body {
     background-position: center;
     transition: 0.5s;
 
-    font-family: Arial, sans-serif;
+    
     padding: 30px;
+}
+
+#temperature {
+
+    font-size: 5rem;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.5);
+
+    animation:
+        pulse 2s infinite;
 }
 
 .container {
@@ -93,7 +104,11 @@ button {
 
 button:hover {
 
-    background: #2563eb;
+    transform:
+        translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.3);
 }
 
 .weather-box h1 {
@@ -123,6 +138,30 @@ button:hover {
 
     margin-top: 10px;
 }
+#weather-icon {
+
+    animation:
+        floatIcon 3s ease-in-out infinite;
+}
+@keyframes floatIcon {
+
+    0% {
+
+        transform: translateY(0px);
+    }
+
+    50% {
+
+        transform: translateY(-8px);
+    }
+
+    100% {
+
+        transform: translateY(0px);
+    }
+}
+
+
 
 /* GLASS EFFECT */
 
@@ -136,6 +175,26 @@ button:hover {
 
     border:
         1px solid rgba(255,255,255,0.1);
+    animation:
+    floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+
+    0% {
+
+        transform: translateY(0px);
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+    }
+
+    100% {
+
+        transform: translateY(0px);
+    }
 }
 
 .container:hover {
@@ -231,37 +290,104 @@ button:disabled {
 
     transform: scale(1.05);
 }
+
 /* WEATHER BACKGROUNDS */
 
 .clear {
 
-    background-image:
-url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');
+    background:
+    linear-gradient(-45deg,
+    #4facfe,
+    #00f2fe,
+    #43e97b,
+    #38f9d7);
+
+    background-size: 400% 400%;
+
+    animation:
+        gradient 15s ease infinite;
 }
 
 .clouds {
 
-    background-image:
-url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=2070&auto=format&fit=crop');
+    background:
+    linear-gradient(-45deg,
+    #757f9a,
+    #d7dde8,
+    #606c88,
+    #3f4c6b);
+
+    background-size: 400% 400%;
+
+    animation:
+        gradient 15s ease infinite;
 }
 
 .rain {
 
-    background-image:
-url('https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=2070&auto=format&fit=crop');
+    background:
+    linear-gradient(-45deg,
+    #141e30,
+    #243b55,
+    #0f2027,
+    #203a43);
+
+    background-size: 400% 400%;
+
+    animation:
+        gradient 15s ease infinite;
 }
 
 .snow {
 
-    background-image:
-url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d?q=80&w=2070&auto=format&fit=crop');
+    background:
+    linear-gradient(-45deg,
+    #e6dada,
+    #274046,
+    #d3cce3,
+    #e9e4f0);
+
+    background-size: 400% 400%;
+
+    animation:
+        gradient 15s ease infinite;
 }
 
 .thunderstorm {
 
-    background-image:
-url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?q=80&w=2070&auto=format&fit=crop');
+    background:
+    linear-gradient(-45deg,
+    #232526,
+    #414345,
+    #000000,
+    #434343);
+
+    background-size: 400% 400%;
+
+    animation:
+        gradient 15s ease infinite;
 }
+
+/* GRADIENT ANIMATION */
+
+@keyframes gradient {
+
+    0% {
+
+        background-position: 0% 50%;
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+    }
+}
+
 #location-btn {
 
     margin-top: 15px;
@@ -335,6 +461,8 @@ url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?q=80&w=2070&au
 
 .forecast-card:hover {
 
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.2);
     transform: translateY(-5px);
 
     background:
@@ -351,7 +479,7 @@ footer {
 
     bottom: 10px;
 
-    color: white;
+    color: black;
 
     font-size: 0.9rem;
 }
@@ -381,5 +509,23 @@ footer {
     button {
 
         width: 100%;
+    }
+}
+
+@keyframes pulse {
+
+    0% {
+
+        transform: scale(1);
+    }
+
+    50% {
+
+        transform: scale(1.03);
+    }
+
+    100% {
+
+        transform: scale(1);
     }
 }
