@@ -1,5 +1,10 @@
 const apiKey = "7aa46ff16e9fcb4c5a44464b21457ec0";
 
+const weatherEffect =
+    document.getElementById(
+        "weather-effect"
+    );
+
 const forecastContainer =
     document.getElementById(
         "forecast-container"
@@ -93,6 +98,14 @@ async function getWeather(city) {
             originalBtnText;
 
         searchBtn.disabled = false;
+    }
+}
+
+function clearEffects() {
+
+    if(weatherEffect) {
+
+        weatherEffect.innerHTML = "";
     }
 }
 
@@ -207,29 +220,41 @@ function updateWeatherUI(data) {
 
     document.body.className = "";
 
-    if(weatherMain.includes("clear")) {
+    /* CLEAR OLD EFFECTS */
+
+    clearEffects();
+
+    /* WEATHER CONDITIONS */
+
+    if(weatherMain === "clear") {
 
         document.body.classList.add("clear");
     }
 
-    else if(weatherMain.includes("cloud")) {
+    else if(weatherMain === "clouds") {
 
         document.body.classList.add("clouds");
     }
 
-    else if(weatherMain.includes("rain")) {
+    else if(weatherMain === "rain") {
 
         document.body.classList.add("rain");
+
+        createRain();
     }
 
-    else if(weatherMain.includes("snow")) {
-
+    else if(weatherMain === "snow") {
+    
         document.body.classList.add("snow");
+
+        createSnow();
     }
 
-    else if(weatherMain.includes("thunderstorm")) {
+    else if(weatherMain === "thunderstorm") {
 
         document.body.classList.add("thunderstorm");
+
+        createRain();
     }
 
     else {
@@ -241,7 +266,7 @@ function updateWeatherUI(data) {
         data.weather[0].icon;
 
     const iconUrl =
-`https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
     document.getElementById("weather-icon")
         .src = iconUrl;
@@ -324,4 +349,58 @@ src="https://openweathermap.org/img/wn/${icon}@2x.png"
         forecastContainer
             .appendChild(card);
     });
+}
+
+function createRain() {
+
+    weatherEffect.innerHTML = "";
+
+    clearEffects();
+
+    for(let i = 0; i < 100; i++) {
+
+        const drop =
+            document.createElement("div");
+
+        drop.classList.add("rain-drop");
+
+        drop.style.left =
+            Math.random() * 100 + "vw";
+
+        drop.style.animationDuration =
+            Math.random() * 1 + 0.5 + "s";
+
+        drop.style.opacity =
+            Math.random();
+
+        weatherEffect.appendChild(drop);
+    }
+}
+
+function createSnow() {
+
+    weatherEffect.innerHTML = "";
+
+    clearEffects();
+
+    for(let i = 0; i < 50; i++) {
+
+        const snow =
+            document.createElement("div");
+
+        snow.classList.add("snowflake");
+
+        snow.innerHTML = "❄";
+
+        snow.style.left =
+            Math.random() * 100 + "vw";
+
+        snow.style.animationDuration =
+            Math.random() * 5 + 3 + "s";
+
+        snow.style.opacity =
+            Math.random();
+
+        weatherEffect.appendChild(snow);
+    }
 }
