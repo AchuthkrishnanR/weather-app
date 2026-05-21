@@ -8,18 +8,28 @@
 
 body {
 
-    height: 100vh;
     font-family: 'Poppins', sans-serif;
+
+    min-height: 100vh;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
-    background-size: cover;
-    background-position: center;
-    transition: 0.5s;
+    background:
+        linear-gradient(
+            135deg,
+            #f5f7fa,
+            #e4ecfb
+        );
 
-    
     padding: 30px;
+
+    color: #111;
+
+    overflow-x: hidden;
 }
 
 #temperature {
@@ -35,34 +45,39 @@ body {
 
 .container {
 
-    background: #1e293b;
+    width: 450px;
 
-    padding: 40px;
+    max-width: 95%;
 
-    border-radius: 20px;
+    background:
+        rgba(255,255,255,0.7);
 
-    width: 420px;
+    backdrop-filter:
+        blur(15px);
 
-    max-width: 90%;
+    border-radius: 35px;
 
-    text-align: center;
-
-    color: white;
+    padding: 35px;
 
     box-shadow:
-        0 0 20px rgba(0,0,0,0.4);
+        0 10px 30px rgba(0,0,0,0.08);
 
     display: flex;
 
     flex-direction: column;
 
-    align-items: center;
-
-    gap: 15px;
+    gap: 25px;
 }
 
 h1 {
-    margin-bottom: 20px;
+
+    font-size: 3rem;
+
+    text-align: center;
+
+    color: #111827;
+
+    font-weight: 700;
 }
 
 .search-box {
@@ -78,26 +93,48 @@ input {
 
     flex: 1;
 
-    padding: 10px;
-
     border: none;
 
-    border-radius: 10px;
-
     outline: none;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.8);
+
+    font-size: 1rem;
+
+    color: #111;
+
+    body:not(.light-mode) input {
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+}
 }
 
 button {
 
-    padding: 10px 15px;
-
     border: none;
 
-    border-radius: 10px;
+    padding: 16px 24px;
 
-    background: #3b82f6;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b8cff,
+            #4f6df5
+        );
 
     color: white;
+
+    font-weight: 600;
 
     cursor: pointer;
 
@@ -211,15 +248,36 @@ button:hover {
 
 input {
 
-    background: rgba(255,255,255,0.1);
+    flex: 1;
 
-    color: white;
+    border: none;
+
+    outline: none;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,0.8);
+
     font-size: 1rem;
+
+    box-shadow:
+        inset 2px 2px 5px rgba(0,0,0,0.05),
+        inset -2px -2px 5px rgba(255,255,255,0.8);
 }
 
 input::placeholder {
 
     color: #cbd5e1;
+}
+
+.input-section {
+
+    display: flex;
+
+    gap: 15px;
 }
 
 /* BUTTON HOVER */
@@ -272,17 +330,18 @@ button:disabled {
 #history-list li {
 
     background:
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,0.8);
 
-    padding: 8px 14px;
+    color: inherit;
 
-    border-radius: 30px;
+    border-radius: 15px;
 
-    cursor: pointer;
+    padding: 10px 18px;
+
+    box-shadow:
+        0 3px 8px rgba(0,0,0,0.05);
 
     transition: 0.3s;
-
-    font-size: 0.95rem;
 }
 
 #history-list li:hover {
@@ -447,18 +506,22 @@ button:disabled {
 
 .forecast-card {
 
-    min-width: 90px;
+    min-width: 95px;
 
     background:
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,0.7);
 
-    padding: 12px;
+    border-radius: 20px;
 
-    border-radius: 15px;
+    padding: 18px;
 
     text-align: center;
 
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.05);
+
     transition: 0.3s;
+    color: inherit;
 }
 
 .forecast-card:hover {
@@ -551,6 +614,22 @@ footer {
     z-index: -1;
 }
 
+.weather-box {
+
+    background:
+        rgba(255,255,255,0.55);
+
+    border-radius: 30px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.05);
+    color: inherit;
+}
+
 /* RAIN */
 
 .rain-drop {
@@ -609,4 +688,116 @@ footer {
         transform:
             translateY(100vh);
     }
+}
+
+/* THEME TOGGLE */
+
+#theme-toggle {
+
+    margin-bottom: 15px;
+
+    background:
+        rgba(255,255,255,0.15);
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter:
+        blur(10px);
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#theme-toggle:hover {
+
+    transform: scale(1.05);
+
+    background:
+        rgba(255,255,255,0.25);
+}
+
+/* LIGHT MODE */
+
+.light-mode {
+
+    color: #111;
+}
+
+.light-mode .container {
+
+    background:
+        rgba(255,255,255,0.7);
+
+    color: #111;
+}
+/* DARK MODE FIX */
+
+.container {
+
+    color: white;
+}
+
+.light-mode input {
+
+    background:
+        rgba(255,255,255,0.8);
+
+    color: black;
+}
+
+.light-mode button {
+
+    color: white;
+}
+
+.light-mode .forecast-card,
+.light-mode #history-list li {
+
+    background:
+        rgba(255,255,255,0.5);
+
+    color: black;
+}
+
+.extra-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.info-card {
+
+    flex: 1;
+
+    background:
+        rgba(240,245,255,0.8);
+
+    border-radius: 18px;
+
+    padding: 15px;
+}
+/* DEFAULT DARK MODE TEXT */
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+li {
+
+    color: inherit;
 }

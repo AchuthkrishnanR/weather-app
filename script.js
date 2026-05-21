@@ -5,6 +5,11 @@ const weatherEffect =
         "weather-effect"
     );
 
+const themeToggle =
+    document.getElementById(
+        "theme-toggle"
+    );
+
 const forecastContainer =
     document.getElementById(
         "forecast-container"
@@ -403,4 +408,33 @@ function createSnow() {
 
         weatherEffect.appendChild(snow);
     }
+}
+
+if(themeToggle) {
+
+    themeToggle.addEventListener(
+        "click",
+        () => {
+
+            document.body.classList.toggle(
+                "light-mode"
+            );
+
+            if(
+                document.body.classList.contains(
+                    "light-mode"
+                )
+            ) {
+
+                themeToggle.innerHTML =
+                    "☀ Light Mode";
+            }
+
+            else {
+
+                themeToggle.innerHTML =
+                    "🌙 Dark Mode";
+            }
+        }
+    );
 }
