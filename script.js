@@ -5,6 +5,11 @@ const weatherEffect =
         "weather-effect"
     );
 
+const loader =
+    document.getElementById(
+        "loader"
+    );
+
 const themeToggle =
     document.getElementById(
         "theme-toggle"
@@ -55,7 +60,7 @@ cityInput.addEventListener("keypress", (event) => {
 });
 
 async function getWeather(city) {
-
+    loader.style.display = "flex";
     const url =
 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -81,6 +86,7 @@ async function getWeather(city) {
         }
 
         updateWeatherUI(data);
+        loader.style.display = "none";
 
         getForecast(city);
         
@@ -417,23 +423,23 @@ if(themeToggle) {
         () => {
 
             document.body.classList.toggle(
-                "light-mode"
+                "dark-mode"
             );
 
             if(
                 document.body.classList.contains(
-                    "light-mode"
+                    "dark-mode"
                 )
             ) {
 
                 themeToggle.innerHTML =
-                    "☀ Light Mode";
+                    "☀ Light";
             }
 
             else {
 
                 themeToggle.innerHTML =
-                    "🌙 Dark Mode";
+                    "🌙 Dark";
             }
         }
     );
